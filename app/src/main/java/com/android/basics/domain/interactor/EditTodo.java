@@ -15,20 +15,6 @@ public class EditTodo extends UseCase<Todo, Boolean> {
 
     @Override
     protected void executeTask(Todo param, final Callback<Boolean> callback) {
-        todoRepository.editTodo(param, new Callback<Boolean>() {
-            @Override
-            public void onResponse(Boolean response) {
-                if (!isDisposed()) {
-                    callback.onResponse(response);
-                }
-            }
-
-            @Override
-            public void onError(String errorcode, String errorResponse) {
-                if (!isDisposed()) {
-                    callback.onError("E4", "Could not able to edit todo!!!");
-                }
-            }
-        });
+        todoRepository.editTodo(param);
     }
 }

@@ -27,7 +27,7 @@ public class AuthenticateUser extends UseCase<User, User> {
             @Override
             public void onError(String errorcode, String errorResponse) {
                 if (!isDisposed()) {
-                    callback.onError("E1", "Could not able to authenticate!!!");
+                    callback.onError(errorcode, errorResponse);
                 }
             }
         });

@@ -1,9 +1,6 @@
 package com.android.basics.data.source.dao;
 
 import androidx.room.Dao;
-import androidx.room.Delete;
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 
@@ -14,11 +11,11 @@ import java.util.List;
 @Dao
 public interface TodoDao {
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(TodoTbl todoTbl);
+    @Query("INSERT INTO todo (userId, name, description, dueDate, isCompleted) VALUES (:userId, :name, :description, :dueDate, :isCompleted)")
+    void insert(int userId, String name, String description, String dueDate, boolean isCompleted);
 
-    @Delete
-    void delete(TodoTbl todoTbl);
+    @Query("DELETE FROM todo WHERE todoId =:todoId")
+    void delete(int todoId);
 
     @Update
     void update(TodoTbl todoTbl);
@@ -26,4 +23,6 @@ public interface TodoDao {
     @Query("SELECT * from todo WHERE userId =:userId ORDER BY todoId DESC")
     List<TodoTbl> getAllTodo(int userId);
 
+    @Query("SELECT * from todo WHERE todoId =:todoId")
+    TodoTbl getTodo(int todoId);
 }

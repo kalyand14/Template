@@ -26,7 +26,7 @@ public class RegisterUser extends UseCase<User, User> {
             @Override
             public void onError(String errorcode, String errorResponse) {
                 if (!isDisposed()) {
-                    callback.onError("E0", "Could not able to register!!!");
+                    callback.onError(errorcode, errorResponse);
                 }
             }
         });
