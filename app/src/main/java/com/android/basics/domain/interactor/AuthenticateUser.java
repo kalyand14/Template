@@ -5,7 +5,7 @@ import com.android.basics.core.mvp.UseCase;
 import com.android.basics.domain.model.User;
 import com.android.basics.domain.repository.UserRepository;
 
-public class AuthenticateUser extends UseCase<AuthenticateUser.Param, User> {
+public class AuthenticateUser extends UseCase<AuthenticateUser.Params, User> {
 
     private UserRepository userRepository;
 
@@ -14,13 +14,8 @@ public class AuthenticateUser extends UseCase<AuthenticateUser.Param, User> {
     }
 
     @Override
-    protected void executeTask(Param param, final Callback<User> callback) {
-
-        User user = new User();
-        user.setUserName(param.userName);
-        user.setPassword(param.password);
-
-        this.userRepository.authenticate(user, new Callback<User>() {
+    protected void executeTask(Params params, final Callback<User> callback) {
+        this.userRepository.authenticate(params.userName, params.password, new Callback<User>() {
             @Override
             public void onResponse(User response) {
                 if (!isDisposed()) {
@@ -38,13 +33,17 @@ public class AuthenticateUser extends UseCase<AuthenticateUser.Param, User> {
 
     }
 
-    public static final class Param {
+    public static final class Params {
         private String userName;
         private String password;
 
-        public Param(String userName, String password) {
+        private Params(String userName, String password) {
             this.userName = userName;
             this.password = password;
+        }
+
+        public static Params forUser(String userName, String password) {
+            return new Params(userName, password);
         }
     }
 }

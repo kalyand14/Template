@@ -16,12 +16,14 @@ public interface LoginContract {
     interface Presenter extends BasePresenter<View> {
         void OnLoginClick(String userName, String password);
 
-        void OSingUpClick();
+        void onRegisterClick();
     }
 
     interface Navigator {
         void goToLoginScreen();
 
         void goToRegisterScreen();
+
+        void goToHomeScreen();
     }
 }

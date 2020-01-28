@@ -30,9 +30,6 @@ public class LoginInjector {
     }
 
     private void injectView(LoginActivity activity) {
-
-
-
         activity.progressDialog = new ProgressDialog(activity);
         activity.progressDialog.setIndeterminate(true);
         activity.progressDialog.setMessage("Logging in");

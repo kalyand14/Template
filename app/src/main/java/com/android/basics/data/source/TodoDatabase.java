@@ -32,7 +32,7 @@ public abstract class TodoDatabase extends RoomDatabase {
             synchronized (TodoDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            TodoDatabase.class, "todo_database")
+                            TodoDatabase.class, "todo_database.db")
                             .build();
                 }
             }

@@ -2,7 +2,6 @@ package com.android.basics.presentation.login;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -18,6 +17,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     ProgressDialog progressDialog;
 
     Button btnLogin;
+    Button btnRegister;
 
     EditText edtUserName;
     EditText edtPassword;
@@ -29,17 +29,14 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         btnLogin = findViewById(R.id.btn_login);
+        btnRegister = findViewById(R.id.btn_signup);
         edtUserName = findViewById(R.id.edt_username);
         edtPassword = findViewById(R.id.edt_password);
         builder = new AlertDialog.Builder(this);
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.OnLoginClick(edtUserName.getText().toString(), edtPassword.getText().toString());
-            }
-        });
+
+        btnLogin.setOnClickListener(view -> presenter.OnLoginClick(edtUserName.getText().toString(), edtPassword.getText().toString()));
+        btnRegister.setOnClickListener(view -> presenter.onRegisterClick());
 
         LoginInjector.getInstance().inject(this);
         this.presenter.attach(this);
@@ -54,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void showProgressDialog() {
+        progressDialog.setMessage("Logging in");
         progressDialog.show();
     }
 

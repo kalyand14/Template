@@ -7,7 +7,7 @@ import com.android.basics.domain.repository.TodoRepository;
 
 import java.util.List;
 
-public class GetTodoList extends UseCase<Integer, List<Todo>> {
+public class GetTodoList extends UseCase<GetTodoList.Params, List<Todo>> {
 
     private TodoRepository todoRepository;
 
@@ -16,8 +16,8 @@ public class GetTodoList extends UseCase<Integer, List<Todo>> {
     }
 
     @Override
-    protected void executeTask(Integer userId, final Callback<List<Todo>> callback) {
-        todoRepository.getTodoList(userId, new Callback<List<Todo>>() {
+    protected void executeTask(Params params, final Callback<List<Todo>> callback) {
+        todoRepository.getTodoList(params.userId, new Callback<List<Todo>>() {
             @Override
             public void onResponse(List<Todo> response) {
                 if (!isDisposed()) {
@@ -32,5 +32,18 @@ public class GetTodoList extends UseCase<Integer, List<Todo>> {
                 }
             }
         });
+    }
+
+    public static final class Params {
+
+        private final int userId;
+
+        private Params(int userId) {
+            this.userId = userId;
+        }
+
+        public static Params forUser(int userId) {
+            return new Params(userId);
+        }
     }
 }

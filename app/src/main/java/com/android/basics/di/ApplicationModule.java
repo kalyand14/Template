@@ -37,8 +37,6 @@ public class ApplicationModule {
         return new Navigator(activity, intentFactory, bundleFactory);
     }
 
-
-
     public UserRepository provideUserRepository(DaoExecutor daoExecutor, UserDao userDao, UserMapper userMapper) {
         return new UserDataRespository(daoExecutor, userDao, userMapper);
     }

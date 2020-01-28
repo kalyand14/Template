@@ -21,9 +21,9 @@ public class UserDataRespository implements UserRepository {
     }
 
     @Override
-    public void authenticate(final User user, Callback<User> callback) {
+    public void authenticate(String userName, String password, Callback<User> callback) {
         DaoCallback daoCallback = () -> {
-            User response = userMapper.convert(userDao.getUser(user.getUserName(), user.getPassword()));
+            User response = userMapper.convert(userDao.getUser(userName, password));
             if (response != null) {
                 callback.onResponse(response);
             } else {
@@ -34,10 +34,10 @@ public class UserDataRespository implements UserRepository {
     }
 
     @Override
-    public void register(User user, Callback<User> callback) {
+    public void register(String userName, String password, Callback<User> callback) {
         DaoCallback daoCallback = () -> {
-            userDao.insert(user.getUserName(), user.getPassword());
-            User response = userMapper.convert(userDao.getUser(user.getUserName(), user.getPassword()));
+            userDao.insert(userName, password);
+            User response = userMapper.convert(userDao.getUser(userName, password));
             if (response != null) {
                 callback.onResponse(response);
             } else {

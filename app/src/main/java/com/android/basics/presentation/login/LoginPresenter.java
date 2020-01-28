@@ -21,13 +21,13 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void OnLoginClick(String userName, String password) {
         view.showProgressDialog();
 
-        authenticateUser.execute(new AuthenticateUser.Param(userName, password), new Callback<User>() {
+        authenticateUser.execute(AuthenticateUser.Params.forUser(userName, password), new Callback<User>() {
             @Override
             public void onResponse(User response) {
 
                 view.dismissProgressDialog();
                 if (response.getUserId() != 0) {
-                    navigator.goToLoginScreen();
+                    navigator.goToHomeScreen();
                 } else {
                     view.showAuthenticationError();
                 }
@@ -44,7 +44,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void OSingUpClick() {
+    public void onRegisterClick() {
         navigator.goToRegisterScreen();
     }
 
