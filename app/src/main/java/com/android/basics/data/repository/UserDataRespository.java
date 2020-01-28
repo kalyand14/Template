@@ -1,8 +1,8 @@
 package com.android.basics.data.repository;
 
 import com.android.basics.core.Callback;
-import com.android.basics.data.core.DaoCallback;
-import com.android.basics.data.core.DaoExecutor;
+import com.android.basics.data.component.DaoCallback;
+import com.android.basics.data.component.DaoExecutor;
 import com.android.basics.data.mapper.UserMapper;
 import com.android.basics.data.source.dao.UserDao;
 import com.android.basics.domain.model.User;

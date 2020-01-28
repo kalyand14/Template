@@ -1,4 +1,4 @@
-package com.android.basics.data.core;
+package com.android.basics.data.component;
 
 import android.os.AsyncTask;
 
