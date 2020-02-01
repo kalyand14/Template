@@ -1,6 +1,7 @@
 package com.android.basics.presentation.home;
 
 import com.android.basics.core.Callback;
+import com.android.basics.di.UserScope;
 import com.android.basics.domain.interactor.todo.GetTodoListInteractor;
 import com.android.basics.domain.model.Todo;
 import com.android.basics.presentation.components.UserSession;
@@ -17,10 +18,16 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
 
     private UserSession session;
 
-    public HomeScreenPresenter(GetTodoListInteractor getTodoListInteractor, UserSession session, HomeScreenContract.Navigator navigator) {
+    private UserScope userScope;
+
+    public HomeScreenPresenter(GetTodoListInteractor getTodoListInteractor,
+                               UserSession session,
+                               UserScope userScope,
+                               HomeScreenContract.Navigator navigator) {
         this.getTodoListInteractor = getTodoListInteractor;
         this.navigator = navigator;
         this.session = session;
+        this.userScope = userScope;
     }
 
     @Override
@@ -59,6 +66,14 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
 
     @Override
     public void onLogout() {
+        view.showLogoutConfirmationDialog();
+    }
+
+    @Override
+    public void logout() {
+
+        userScope.end();
+
         navigator.goToLoginScreen();
     }
 

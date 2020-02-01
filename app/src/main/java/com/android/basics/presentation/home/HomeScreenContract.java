@@ -19,12 +19,16 @@ public interface HomeScreenContract {
         void loadTodoList(List<Todo> todoList);
 
         void setWelcomeMessage(String message);
+
+        void showLogoutConfirmationDialog();
     }
 
     interface Presenter extends BasePresenter<View> {
         void onLoadTodoList(int userId);
 
         void onLogout();
+
+        void logout();
 
         void onAddTodo();
     }

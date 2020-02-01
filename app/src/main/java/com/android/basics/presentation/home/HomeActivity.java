@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,12 +32,14 @@ public class HomeActivity extends AppCompatActivity implements HomeScreenContrac
     User user;
     TextView txtError;
     FloatingActionButton floatingActionButton;
-
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        builder = new AlertDialog.Builder(this);
 
         floatingActionButton = findViewById(R.id.fab);
         txtError = findViewById(R.id.tv_message);
@@ -91,6 +94,24 @@ public class HomeActivity extends AppCompatActivity implements HomeScreenContrac
     @Override
     public void setWelcomeMessage(String message) {
         setTitle(message);
+    }
+
+    @Override
+    public void showLogoutConfirmationDialog() {
+        //Setting message manually and performing action on button click
+        builder.setMessage("Do you want to log out?")
+                .setCancelable(false)
+                .setPositiveButton("Yes", (dialog, id) -> {
+                    dialog.dismiss();
+                    presenter.logout();
+                })
+                .setNegativeButton("No", (dialog, id) -> {
+                    dialog.dismiss();
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        alert.setTitle("Logout");
+        alert.show();
     }
 
     @Override
