@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 
 import com.android.basics.core.TodoApplication;
 import com.android.basics.di.ApplicationScope;
-import com.android.basics.domain.interactor.GetTodoList;
+import com.android.basics.domain.interactor.GetTodoListInteractor;
 import com.android.basics.presentation.TodoNavigator;
 import com.android.basics.presentation.components.UserSession;
 import com.android.basics.presentation.home.components.TodoListAdapter;
@@ -53,8 +53,8 @@ public class HomeScreenInjector {
         return new TodoListAdapter(new ArrayList<>(), provideNavigator(activity));
     }
 
-    private GetTodoList provideGetTodoList() {
-        return new GetTodoList(applicationScope.todoRepository());
+    private GetTodoListInteractor provideGetTodoList() {
+        return new GetTodoListInteractor(applicationScope.todoRepository());
     }
 
 

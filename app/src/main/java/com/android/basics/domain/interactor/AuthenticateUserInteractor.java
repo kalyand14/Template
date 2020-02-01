@@ -5,11 +5,11 @@ import com.android.basics.core.mvp.UseCase;
 import com.android.basics.domain.model.User;
 import com.android.basics.domain.repository.UserRepository;
 
-public class AuthenticateUser extends UseCase<AuthenticateUser.Params, User> {
+public class AuthenticateUserInteractor extends UseCase<AuthenticateUserInteractor.Params, User> {
 
     private UserRepository userRepository;
 
-    public AuthenticateUser(UserRepository userRepository) {
+    public AuthenticateUserInteractor(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

@@ -4,16 +4,16 @@ import com.android.basics.core.Callback;
 import com.android.basics.core.mvp.UseCase;
 import com.android.basics.domain.repository.TodoRepository;
 
-public class AddTodo extends UseCase<AddTodo.Params, Boolean> {
+public class AddTodoInteractor extends UseCase<AddTodoInteractor.Params, Boolean> {
 
     private TodoRepository todoRepository;
 
-    public AddTodo(TodoRepository todoRepository) {
+    public AddTodoInteractor(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
 
     @Override
-    protected void executeTask(AddTodo.Params param, final Callback<Boolean> callback) {
+    protected void executeTask(AddTodoInteractor.Params param, final Callback<Boolean> callback) {
         todoRepository.addTodo(param.userId, param.name, param.description, param.date, new Callback<Boolean>() {
             @Override
             public void onResponse(Boolean response) {
@@ -44,8 +44,8 @@ public class AddTodo extends UseCase<AddTodo.Params, Boolean> {
             this.date = date;
         }
 
-        public static AddTodo.Params forTodo(int userId, String name, String description, String date) {
-            return new AddTodo.Params(userId, name, description, date);
+        public static AddTodoInteractor.Params forTodo(int userId, String name, String description, String date) {
+            return new AddTodoInteractor.Params(userId, name, description, date);
         }
     }
 }

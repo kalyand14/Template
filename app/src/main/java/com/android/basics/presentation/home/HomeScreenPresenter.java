@@ -1,7 +1,7 @@
 package com.android.basics.presentation.home;
 
 import com.android.basics.core.Callback;
-import com.android.basics.domain.interactor.GetTodoList;
+import com.android.basics.domain.interactor.GetTodoListInteractor;
 import com.android.basics.domain.model.Todo;
 import com.android.basics.presentation.components.UserSession;
 
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class HomeScreenPresenter implements HomeScreenContract.Presenter {
 
-    private GetTodoList getTodoList;
+    private GetTodoListInteractor getTodoListInteractor;
 
     private HomeScreenContract.View view;
 
@@ -17,8 +17,8 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
 
     private UserSession session;
 
-    public HomeScreenPresenter(GetTodoList getTodoList, UserSession session, HomeScreenContract.Navigator navigator) {
-        this.getTodoList = getTodoList;
+    public HomeScreenPresenter(GetTodoListInteractor getTodoListInteractor, UserSession session, HomeScreenContract.Navigator navigator) {
+        this.getTodoListInteractor = getTodoListInteractor;
         this.navigator = navigator;
         this.session = session;
     }
@@ -29,7 +29,7 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
         view.setWelcomeMessage("Welcome " + session.getUser().getUserName());
 
         view.showProgressDialog();
-        getTodoList.execute(GetTodoList.Params.forUser(userId), new Callback<List<Todo>>() {
+        getTodoListInteractor.execute(GetTodoListInteractor.Params.forUser(userId), new Callback<List<Todo>>() {
             @Override
             public void onResponse(List<Todo> response) {
 

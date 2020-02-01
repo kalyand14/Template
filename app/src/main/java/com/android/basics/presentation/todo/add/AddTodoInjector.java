@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 
 import com.android.basics.core.TodoApplication;
 import com.android.basics.di.ApplicationScope;
-import com.android.basics.domain.interactor.AddTodo;
+import com.android.basics.domain.interactor.AddTodoInteractor;
 import com.android.basics.presentation.TodoNavigator;
 import com.android.basics.presentation.components.UserSession;
 
@@ -42,8 +42,8 @@ public class AddTodoInjector {
         return new TodoNavigator(applicationScope.navigator(activity));
     }
 
-    private AddTodo provideAddTodo() {
-        return new AddTodo(applicationScope.todoRepository());
+    private AddTodoInteractor provideAddTodo() {
+        return new AddTodoInteractor(applicationScope.todoRepository());
     }
 
     public void destroy() {

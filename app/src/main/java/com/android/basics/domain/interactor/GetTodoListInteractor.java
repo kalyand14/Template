@@ -7,11 +7,11 @@ import com.android.basics.domain.repository.TodoRepository;
 
 import java.util.List;
 
-public class GetTodoList extends UseCase<GetTodoList.Params, List<Todo>> {
+public class GetTodoListInteractor extends UseCase<GetTodoListInteractor.Params, List<Todo>> {
 
     private TodoRepository todoRepository;
 
-    public GetTodoList(TodoRepository todoRepository) {
+    public GetTodoListInteractor(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
 

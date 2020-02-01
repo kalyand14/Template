@@ -5,11 +5,11 @@ import com.android.basics.core.mvp.UseCase;
 import com.android.basics.domain.model.Todo;
 import com.android.basics.domain.repository.TodoRepository;
 
-public class EditTodo extends UseCase<Todo, Boolean> {
+public class EditTodoInteractor extends UseCase<Todo, Boolean> {
 
     private TodoRepository todoRepository;
 
-    public EditTodo(TodoRepository todoRepository) {
+    public EditTodoInteractor(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
 

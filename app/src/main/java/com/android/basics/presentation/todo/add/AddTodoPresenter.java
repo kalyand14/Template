@@ -1,7 +1,7 @@
 package com.android.basics.presentation.todo.add;
 
 import com.android.basics.core.Callback;
-import com.android.basics.domain.interactor.AddTodo;
+import com.android.basics.domain.interactor.AddTodoInteractor;
 import com.android.basics.presentation.components.UserSession;
 
 public class AddTodoPresenter implements AddTodoContract.Presenter {
@@ -10,19 +10,19 @@ public class AddTodoPresenter implements AddTodoContract.Presenter {
 
     private AddTodoContract.Navigator navigator;
 
-    private AddTodo addTodo;
+    private AddTodoInteractor addTodoInteractor;
 
     private UserSession session;
 
-    public AddTodoPresenter(AddTodoContract.Navigator navigator, AddTodo addTodo, UserSession session) {
+    public AddTodoPresenter(AddTodoContract.Navigator navigator, AddTodoInteractor addTodoInteractor, UserSession session) {
         this.navigator = navigator;
-        this.addTodo = addTodo;
+        this.addTodoInteractor = addTodoInteractor;
         this.session = session;
     }
 
     @Override
     public void onSubmit(String name, String desc, String date) {
-        addTodo.execute(AddTodo.Params.forTodo(session.getUser().getUserId(), name, desc, date), new Callback<Boolean>() {
+        addTodoInteractor.execute(AddTodoInteractor.Params.forTodo(session.getUser().getUserId(), name, desc, date), new Callback<Boolean>() {
             @Override
             public void onResponse(Boolean response) {
                 view.dismissProgressDialog();

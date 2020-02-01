@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 
 import com.android.basics.core.TodoApplication;
 import com.android.basics.di.ApplicationScope;
-import com.android.basics.domain.interactor.AuthenticateUser;
+import com.android.basics.domain.interactor.AuthenticateUserInteractor;
 import com.android.basics.presentation.TodoNavigator;
 import com.android.basics.presentation.components.UserSession;
 
@@ -44,8 +44,8 @@ public class LoginInjector {
         return new TodoNavigator(applicationScope.navigator(activity));
     }
 
-    private AuthenticateUser provideAuthenticator() {
-        return new AuthenticateUser(applicationScope.userRepository());
+    private AuthenticateUserInteractor provideAuthenticator() {
+        return new AuthenticateUserInteractor(applicationScope.userRepository());
     }
 
     public void destroy() {

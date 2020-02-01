@@ -1,13 +1,13 @@
 package com.android.basics.presentation.registration;
 
 import com.android.basics.core.Callback;
-import com.android.basics.domain.interactor.RegisterUser;
+import com.android.basics.domain.interactor.RegisterUserInteractor;
 import com.android.basics.domain.model.User;
 import com.android.basics.presentation.components.UserSession;
 
 public class RegisterUserPresenter implements RegisterUserContract.Presenter {
 
-    private RegisterUser registerUser;
+    private RegisterUserInteractor registerUserInteractor;
 
     private RegisterUserContract.View view;
 
@@ -15,8 +15,8 @@ public class RegisterUserPresenter implements RegisterUserContract.Presenter {
 
     private UserSession session;
 
-    public RegisterUserPresenter(RegisterUserContract.Navigator navigator, RegisterUser registerUser, UserSession session) {
-        this.registerUser = registerUser;
+    public RegisterUserPresenter(RegisterUserContract.Navigator navigator, RegisterUserInteractor registerUserInteractor, UserSession session) {
+        this.registerUserInteractor = registerUserInteractor;
         this.navigator = navigator;
         this.session = session;
     }
@@ -26,7 +26,7 @@ public class RegisterUserPresenter implements RegisterUserContract.Presenter {
 
         view.showProgressDialog();
 
-        registerUser.execute(RegisterUser.Params.forUser(userName, password), new Callback<User>() {
+        registerUserInteractor.execute(RegisterUserInteractor.Params.forUser(userName, password), new Callback<User>() {
             @Override
             public void onResponse(User response) {
 
