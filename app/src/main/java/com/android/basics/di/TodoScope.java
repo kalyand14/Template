@@ -16,6 +16,10 @@ public class TodoScope implements BaseScope {
         return UserScope.getInstance().getContainer().get(TodoScope.class);
     }
 
+    public InstanceContainer getContainer() {
+        return container;
+    }
+
     @Override
     public void end() {
         container.end();

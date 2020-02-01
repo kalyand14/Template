@@ -63,38 +63,38 @@ public class RegisterUserActivity extends AppCompatActivity implements RegisterU
 
     @Override
     public void showRegistrationError() {
-        runOnUiThread(() -> {
-            edtUserName.setText("");
-            edtPassword.setText("");
 
-            //Setting message manually and performing action on button click
-            builder.setMessage("There was a problem. could not able to register with details.")
-                    .setCancelable(false)
-                    .setPositiveButton("Ok", (dialog, id) -> {
-                        dialog.dismiss();
-                    });
-            //Creating dialog box
-            AlertDialog alert = builder.create();
-            alert.setTitle("Error");
-            alert.show();
-        });
+        edtUserName.setText("");
+        edtPassword.setText("");
+
+        //Setting message manually and performing action on button click
+        builder.setMessage("There was a problem. could not able to register with details.")
+                .setCancelable(false)
+                .setPositiveButton("Ok", (dialog, id) -> {
+                    dialog.dismiss();
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        alert.setTitle("Error");
+        alert.show();
+
     }
 
     @Override
     public void showRegistrationSuccess() {
 
-        runOnUiThread(() -> {
-            //Setting message manually and performing action on button click
-            builder.setMessage("you've successfully registered.")
-                    .setCancelable(false)
-                    .setPositiveButton("Ok", (dialog, id) -> {
-                        dialog.dismiss();
-                        presenter.onRegistrationSuccess();
-                    });
-            //Creating dialog box
-            AlertDialog alert = builder.create();
-            alert.setTitle("Congrats");
-            alert.show();
-        });
+
+        //Setting message manually and performing action on button click
+        builder.setMessage("you've successfully registered.")
+                .setCancelable(false)
+                .setPositiveButton("Ok", (dialog, id) -> {
+                    dialog.dismiss();
+                    presenter.onRegistrationSuccess();
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        alert.setTitle("Congrats");
+        alert.show();
+
     }
 }

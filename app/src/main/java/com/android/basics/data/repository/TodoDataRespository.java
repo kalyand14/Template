@@ -6,6 +6,7 @@ import com.android.basics.data.component.DaoExecutor;
 import com.android.basics.data.mapper.TodoListMapper;
 import com.android.basics.data.mapper.TodoMapper;
 import com.android.basics.data.source.dao.TodoDao;
+import com.android.basics.data.source.entity.TodoTbl;
 import com.android.basics.domain.model.Todo;
 import com.android.basics.domain.repository.TodoRepository;
 
@@ -68,17 +69,25 @@ public class TodoDataRespository implements TodoRepository {
     }
 
     @Override
-    public void editTodo(Todo todo) {
-        DaoCallback<Void> daoCallback = new DaoCallback<Void>() {
+    public void editTodo(int todoId, String name, String description, String date, Callback<Boolean> callback) {
+        DaoCallback<Integer> daoCallback = new DaoCallback<Integer>() {
             @Override
-            public Void doAsync() {
-                todoDao.update(todoMapper.invert(todo));
-                return null;
+            public Integer doAsync() {
+                TodoTbl tbl = todoDao.getTodo(todoId);
+                tbl.setTodoId(todoId);
+                tbl.setDescription(description);
+                tbl.setName(name);
+                tbl.setDueDate(date);
+                return todoDao.update(tbl);
             }
 
             @Override
-            public void onComplete(Void response) {
-
+            public void onComplete(Integer response) {
+                if (response == 1) {
+                    callback.onResponse(true);
+                } else {
+                    callback.onError("00002", "Update failed");
+                }
             }
         };
         daoExecutor.start(daoCallback);
@@ -106,21 +115,22 @@ public class TodoDataRespository implements TodoRepository {
     }
 
     @Override
-    public void deleteTodo(int todoId) {
-        DaoCallback<Void> daoCallback = new DaoCallback<Void>() {
+    public void deleteTodo(int todoId, Callback<Boolean> callback) {
+        DaoCallback<Integer> daoCallback = new DaoCallback<Integer>() {
             @Override
-            public Void doAsync() {
-                todoDao.delete(todoId);
-                return null;
+            public Integer doAsync() {
+                return todoDao.delete(todoId);
             }
 
             @Override
-            public void onComplete(Void response) {
-
+            public void onComplete(Integer response) {
+                if (response == 1) {
+                    callback.onResponse(true);
+                } else {
+                    callback.onError("00002", "Update failed");
+                }
             }
         };
         daoExecutor.start(daoCallback);
-
-
     }
 }

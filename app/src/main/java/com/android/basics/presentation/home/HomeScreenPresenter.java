@@ -1,7 +1,7 @@
 package com.android.basics.presentation.home;
 
 import com.android.basics.core.Callback;
-import com.android.basics.domain.interactor.GetTodoListInteractor;
+import com.android.basics.domain.interactor.todo.GetTodoListInteractor;
 import com.android.basics.domain.model.Todo;
 import com.android.basics.presentation.components.UserSession;
 

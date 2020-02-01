@@ -39,6 +39,27 @@ public class TodoTbl {
     @NonNull
     private int todoId;
     private int userId;
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public void setCompleted(Boolean completed) {
+        isCompleted = completed;
+    }
+
     private String name;
     private String description;
     private String dueDate;

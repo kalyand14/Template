@@ -1,7 +1,7 @@
 package com.android.basics.presentation.login;
 
 import com.android.basics.core.Callback;
-import com.android.basics.domain.interactor.AuthenticateUserInteractor;
+import com.android.basics.domain.interactor.user.AuthenticateUserInteractor;
 import com.android.basics.domain.model.User;
 import com.android.basics.presentation.components.UserSession;
 

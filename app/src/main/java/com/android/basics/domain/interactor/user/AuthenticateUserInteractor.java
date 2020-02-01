@@ -1,4 +1,4 @@
-package com.android.basics.domain.interactor;
+package com.android.basics.domain.interactor.user;
 
 import com.android.basics.core.Callback;
 import com.android.basics.core.mvp.UseCase;

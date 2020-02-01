@@ -4,7 +4,7 @@ import android.app.ProgressDialog;
 
 import com.android.basics.core.TodoApplication;
 import com.android.basics.di.ApplicationScope;
-import com.android.basics.domain.interactor.RegisterUserInteractor;
+import com.android.basics.domain.interactor.user.RegisterUserInteractor;
 import com.android.basics.presentation.TodoNavigator;
 import com.android.basics.presentation.components.UserSession;
 

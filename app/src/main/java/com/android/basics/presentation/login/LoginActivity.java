@@ -73,21 +73,19 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     @Override
     public void showAuthenticationError() {
 
-        runOnUiThread(() -> {
-            edtUserName.setText("");
-            edtPassword.setText("");
+        edtUserName.setText("");
+        edtPassword.setText("");
 
-            //Setting message manually and performing action on button click
-            builder.setMessage("There was a problem logging in. Check your credentials or create an account.")
-                    .setCancelable(false)
-                    .setPositiveButton("Ok", (dialog, id) -> {
-                        dialog.dismiss();
-                    });
-            //Creating dialog box
-            AlertDialog alert = builder.create();
-            alert.setTitle("Error");
-            alert.show();
-        });
+        //Setting message manually and performing action on button click
+        builder.setMessage("There was a problem logging in. Check your credentials or create an account.")
+                .setCancelable(false)
+                .setPositiveButton("Ok", (dialog, id) -> {
+                    dialog.dismiss();
+                });
+        //Creating dialog box
+        AlertDialog alert = builder.create();
+        alert.setTitle("Error");
+        alert.show();
 
 
     }

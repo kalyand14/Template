@@ -1,7 +1,7 @@
 package com.android.basics.presentation.registration;
 
 import com.android.basics.core.Callback;
-import com.android.basics.domain.interactor.RegisterUserInteractor;
+import com.android.basics.domain.interactor.user.RegisterUserInteractor;
 import com.android.basics.domain.model.User;
 import com.android.basics.presentation.components.UserSession;
 

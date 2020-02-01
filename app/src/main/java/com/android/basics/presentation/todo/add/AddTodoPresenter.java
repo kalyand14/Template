@@ -1,7 +1,7 @@
 package com.android.basics.presentation.todo.add;
 
 import com.android.basics.core.Callback;
-import com.android.basics.domain.interactor.AddTodoInteractor;
+import com.android.basics.domain.interactor.todo.AddTodoInteractor;
 import com.android.basics.presentation.components.UserSession;
 
 public class AddTodoPresenter implements AddTodoContract.Presenter {

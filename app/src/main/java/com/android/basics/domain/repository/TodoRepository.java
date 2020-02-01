@@ -10,9 +10,9 @@ public interface TodoRepository {
 
     void getTodo(int todoId, Callback<Todo> callback);
 
-    void editTodo(Todo todo);
+    void editTodo(int todoId, String name, String desctiption, String date, Callback<Boolean> callback);
 
     void addTodo(int userId, String name, String desctiption, String date, Callback<Boolean> callback);
 
-    void deleteTodo(int todoId);
+    void deleteTodo(int todoId, Callback<Boolean> callback);
 }

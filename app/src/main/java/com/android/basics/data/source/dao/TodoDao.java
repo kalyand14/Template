@@ -15,10 +15,10 @@ public interface TodoDao {
     long insert(int userId, String name, String description, String dueDate, boolean isCompleted);
 
     @Query("DELETE FROM todo WHERE todoId =:todoId")
-    void delete(int todoId);
+    int delete(int todoId);
 
     @Update
-    void update(TodoTbl todoTbl);
+    int update(TodoTbl todoTbl);
 
     @Query("SELECT * from todo WHERE userId =:userId ORDER BY todoId DESC")
     List<TodoTbl> getAllTodo(int userId);

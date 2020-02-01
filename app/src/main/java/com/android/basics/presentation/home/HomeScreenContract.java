@@ -31,7 +31,7 @@ public interface HomeScreenContract {
 
     interface Navigator {
 
-        void goToEditTodoScreen(int todoId);
+        void goToEditTodoScreen();
 
         void gotoAddTodoScreen();
 

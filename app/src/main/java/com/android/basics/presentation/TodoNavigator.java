@@ -14,12 +14,14 @@ import com.android.basics.presentation.splash.SplashContract;
 import com.android.basics.presentation.todo.add.AddTodoActivity;
 import com.android.basics.presentation.todo.add.AddTodoContract;
 import com.android.basics.presentation.todo.edit.EditTodoActivity;
+import com.android.basics.presentation.todo.edit.EditTodoContract;
 
 public class TodoNavigator implements SplashContract.Navigator,
         LoginContract.Navigator,
         RegisterUserContract.Navigator,
         HomeScreenContract.Navigator,
-        AddTodoContract.Navigator {
+        AddTodoContract.Navigator,
+        EditTodoContract.Navigator {
     private Navigator navigator;
 
     public TodoNavigator(Navigator navigator) {
@@ -27,7 +29,7 @@ public class TodoNavigator implements SplashContract.Navigator,
     }
 
     @Override
-    public void goToEditTodoScreen(int todoId) {
+    public void goToEditTodoScreen() {
         Intent intent = navigator.createIntent(EditTodoActivity.class);
         navigator.launchActivity(intent);
     }
