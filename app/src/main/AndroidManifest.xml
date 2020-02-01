@@ -20,10 +20,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.home.HomeActivity" />
-        <activity android:name=".presentation.login.LoginActivity" android:theme="@style/SplahAppTheme" />
+        <activity
+            android:name=".presentation.login.LoginActivity"
+            android:theme="@style/SplahAppTheme" />
         <activity android:name=".presentation.registration.RegisterUserActivity" />
-        <activity android:name=".presentation.todo.EditTodoActivity" />
-        <activity android:name=".presentation.todo.AddTodoActivity" />
+        <activity android:name=".presentation.todo.edit.EditTodoActivity" />
+        <activity android:name=".presentation.todo.add.AddTodoActivity" />
     </application>
 
 </manifest>

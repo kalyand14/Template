@@ -4,12 +4,9 @@ import android.app.ProgressDialog;
 
 import com.android.basics.core.TodoApplication;
 import com.android.basics.di.ApplicationScope;
-import com.android.basics.domain.interactor.AuthenticateUser;
 import com.android.basics.domain.interactor.RegisterUser;
 import com.android.basics.presentation.TodoNavigator;
-import com.android.basics.presentation.login.LoginActivity;
-import com.android.basics.presentation.login.LoginContract;
-import com.android.basics.presentation.login.LoginPresenter;
+import com.android.basics.presentation.components.UserSession;
 
 public class RegisterUserInjector {
 
@@ -39,7 +36,7 @@ public class RegisterUserInjector {
     }
 
     private void injectObject(RegisterUserActivity activity) {
-        activity.presenter = new RegisterUserPresenter(provideNavigator(activity), provideRegisterUser());
+        activity.presenter = new RegisterUserPresenter(provideNavigator(activity), provideRegisterUser(), UserSession.getInstance());
     }
 
     private RegisterUserContract.Navigator provideNavigator(RegisterUserActivity activity) {

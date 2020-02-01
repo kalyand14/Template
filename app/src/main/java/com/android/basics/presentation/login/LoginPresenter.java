@@ -3,6 +3,7 @@ package com.android.basics.presentation.login;
 import com.android.basics.core.Callback;
 import com.android.basics.domain.interactor.AuthenticateUser;
 import com.android.basics.domain.model.User;
+import com.android.basics.presentation.components.UserSession;
 
 public class LoginPresenter implements LoginContract.Presenter {
 
@@ -12,9 +13,12 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     private LoginContract.View view;
 
-    public LoginPresenter(LoginContract.Navigator navigator, AuthenticateUser authenticateUser) {
+    private UserSession session;
+
+    public LoginPresenter(LoginContract.Navigator navigator, AuthenticateUser authenticateUser, UserSession session) {
         this.navigator = navigator;
         this.authenticateUser = authenticateUser;
+        this.session = session;
     }
 
     @Override
@@ -24,6 +28,8 @@ public class LoginPresenter implements LoginContract.Presenter {
         authenticateUser.execute(AuthenticateUser.Params.forUser(userName, password), new Callback<User>() {
             @Override
             public void onResponse(User response) {
+
+                session.setUser(response);
 
                 view.dismissProgressDialog();
                 if (response.getUserId() != 0) {
@@ -39,7 +45,6 @@ public class LoginPresenter implements LoginContract.Presenter {
                 view.showAuthenticationError();
             }
         });
-
 
     }
 

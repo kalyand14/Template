@@ -3,6 +3,7 @@ package com.android.basics.presentation.registration;
 import com.android.basics.core.Callback;
 import com.android.basics.domain.interactor.RegisterUser;
 import com.android.basics.domain.model.User;
+import com.android.basics.presentation.components.UserSession;
 
 public class RegisterUserPresenter implements RegisterUserContract.Presenter {
 
@@ -12,9 +13,12 @@ public class RegisterUserPresenter implements RegisterUserContract.Presenter {
 
     private RegisterUserContract.Navigator navigator;
 
-    public RegisterUserPresenter(RegisterUserContract.Navigator navigator, RegisterUser registerUser) {
+    private UserSession session;
+
+    public RegisterUserPresenter(RegisterUserContract.Navigator navigator, RegisterUser registerUser, UserSession session) {
         this.registerUser = registerUser;
         this.navigator = navigator;
+        this.session = session;
     }
 
     @Override
@@ -25,7 +29,11 @@ public class RegisterUserPresenter implements RegisterUserContract.Presenter {
         registerUser.execute(RegisterUser.Params.forUser(userName, password), new Callback<User>() {
             @Override
             public void onResponse(User response) {
+
+                session.setUser(response);
+
                 view.dismissProgressDialog();
+
                 view.showRegistrationSuccess();
             }
 

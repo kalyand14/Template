@@ -22,12 +22,19 @@ public class UserDataRespository implements UserRepository {
 
     @Override
     public void authenticate(String userName, String password, Callback<User> callback) {
-        DaoCallback daoCallback = () -> {
-            User response = userMapper.convert(userDao.getUser(userName, password));
-            if (response != null) {
-                callback.onResponse(response);
-            } else {
-                callback.onError("00002", "No data available");
+        DaoCallback<User> daoCallback = new DaoCallback<User>() {
+            @Override
+            public User doAsync() {
+                return userMapper.convert(userDao.getUser(userName, password));
+            }
+
+            @Override
+            public void onComplete(User response) {
+                if (response != null) {
+                    callback.onResponse(response);
+                } else {
+                    callback.onError("00002", "No data available");
+                }
             }
         };
         daoExecutor.start(daoCallback);
@@ -35,13 +42,20 @@ public class UserDataRespository implements UserRepository {
 
     @Override
     public void register(String userName, String password, Callback<User> callback) {
-        DaoCallback daoCallback = () -> {
-            userDao.insert(userName, password);
-            User response = userMapper.convert(userDao.getUser(userName, password));
-            if (response != null) {
-                callback.onResponse(response);
-            } else {
-                callback.onError("00002", "No data available");
+        DaoCallback<User> daoCallback = new DaoCallback<User>() {
+            @Override
+            public User doAsync() {
+                userDao.insert(userName, password);
+                return userMapper.convert(userDao.getUser(userName, password));
+            }
+
+            @Override
+            public void onComplete(User response) {
+                if (response != null) {
+                    callback.onResponse(response);
+                } else {
+                    callback.onError("00002", "No data available");
+                }
             }
         };
         daoExecutor.start(daoCallback);

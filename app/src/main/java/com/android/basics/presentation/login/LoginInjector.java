@@ -6,6 +6,7 @@ import com.android.basics.core.TodoApplication;
 import com.android.basics.di.ApplicationScope;
 import com.android.basics.domain.interactor.AuthenticateUser;
 import com.android.basics.presentation.TodoNavigator;
+import com.android.basics.presentation.components.UserSession;
 
 public class LoginInjector {
 
@@ -36,7 +37,7 @@ public class LoginInjector {
     }
 
     private void injectObject(LoginActivity activity) {
-        activity.presenter = new LoginPresenter(provideNavigator(activity), provideAuthenticator());
+        activity.presenter = new LoginPresenter(provideNavigator(activity), provideAuthenticator(), UserSession.getInstance());
     }
 
     private LoginContract.Navigator provideNavigator(LoginActivity activity) {
@@ -49,5 +50,6 @@ public class LoginInjector {
 
     public void destroy() {
         instance = null;
+
     }
 }

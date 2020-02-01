@@ -21,13 +21,7 @@ public class SplashInjector {
 
     public void inject(SplashActivity activity) {
         applicationScope = ((TodoApplication) activity.getApplication()).getApplicationScope();
-
-        injectView(activity);
         injectObject(activity);
-    }
-
-    private void injectView(SplashActivity activity) {
-        //Do nothing
     }
 
     private void injectObject(SplashActivity activity) {
@@ -37,7 +31,6 @@ public class SplashInjector {
     private SplashContract.Navigator provideNavigator(SplashActivity activity) {
         return new TodoNavigator(applicationScope.navigator(activity));
     }
-
 
     public void destroy() {
         instance = null;

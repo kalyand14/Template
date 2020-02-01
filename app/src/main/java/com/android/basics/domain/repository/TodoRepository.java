@@ -12,5 +12,7 @@ public interface TodoRepository {
 
     void editTodo(Todo todo);
 
+    void addTodo(int userId, String name, String desctiption, String date, Callback<Boolean> callback);
+
     void deleteTodo(int todoId);
 }

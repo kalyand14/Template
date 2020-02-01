@@ -6,6 +6,7 @@ import com.android.basics.core.di.InstanceContainer;
 import com.android.basics.core.navigation.BundleFactory;
 import com.android.basics.core.navigation.IntentFactory;
 import com.android.basics.core.navigation.Navigator;
+import com.android.basics.domain.repository.TodoRepository;
 import com.android.basics.domain.repository.UserRepository;
 
 public class ApplicationScope {
@@ -13,13 +14,8 @@ public class ApplicationScope {
     private final InstanceContainer container = new InstanceContainer();
     private static ApplicationScope instance = null;
 
-    private UserScope userScope;
 
     private ApplicationModule module;
-
-    public ApplicationModule getModule() {
-        return module;
-    }
 
     public void setModule(ApplicationModule module) {
         this.module = module;
@@ -60,12 +56,17 @@ public class ApplicationScope {
         return container.get(UserRepository.class);
     }
 
-    public UserScope getUserScope() {
-        return userScope;
+    public TodoRepository todoRepository() {
+        if (!container.has(TodoRepository.class)) {
+            container.register(TodoRepository.class, module.provideTodoRepository(module.provideDaoExecutor(), module.provideTodoDao(module.provideTodoDatabase(module.getApplication())), module.provideTodoListMapper(), module.provideTodoMapper()));
+        }
+        return container.get(TodoRepository.class);
     }
 
-    public void setUserScope(UserScope userScope) {
-        this.userScope = userScope;
+
+
+    public InstanceContainer getContainer() {
+        return container;
     }
 
 }

@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.basics.R;
+import com.android.basics.di.UserScope;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
@@ -29,17 +30,25 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btnLogin = findViewById(R.id.btn_login);
+        btnLogin = findViewById(R.id.btn_add_todo);
         btnRegister = findViewById(R.id.btn_signup);
-        edtUserName = findViewById(R.id.edt_username);
-        edtPassword = findViewById(R.id.edt_password);
+        edtUserName = findViewById(R.id.edt_todo_name);
+        edtPassword = findViewById(R.id.edt_todo_description);
         builder = new AlertDialog.Builder(this);
 
         btnLogin.setOnClickListener(view -> presenter.OnLoginClick(edtUserName.getText().toString(), edtPassword.getText().toString()));
         btnRegister.setOnClickListener(view -> presenter.onRegisterClick());
 
+        UserScope.getInstance().end();
+
         LoginInjector.getInstance().inject(this);
         this.presenter.attach(this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dismissProgressDialog();
     }
 
     @Override

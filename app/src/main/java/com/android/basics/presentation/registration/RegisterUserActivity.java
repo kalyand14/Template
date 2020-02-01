@@ -29,10 +29,10 @@ public class RegisterUserActivity extends AppCompatActivity implements RegisterU
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
 
-        btnLogin = findViewById(R.id.btn_login);
+        btnLogin = findViewById(R.id.btn_add_todo);
         btnRegister = findViewById(R.id.btn_signup);
-        edtUserName = findViewById(R.id.edt_username);
-        edtPassword = findViewById(R.id.edt_password);
+        edtUserName = findViewById(R.id.edt_todo_name);
+        edtPassword = findViewById(R.id.edt_todo_description);
         builder = new AlertDialog.Builder(this);
 
         btnRegister.setOnClickListener(view -> presenter.onRegisterClick(edtUserName.getText().toString(), edtPassword.getText().toString()));
@@ -82,6 +82,7 @@ public class RegisterUserActivity extends AppCompatActivity implements RegisterU
 
     @Override
     public void showRegistrationSuccess() {
+
         runOnUiThread(() -> {
             //Setting message manually and performing action on button click
             builder.setMessage("you've successfully registered.")

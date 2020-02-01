@@ -12,7 +12,7 @@ import java.util.List;
 public interface TodoDao {
 
     @Query("INSERT INTO todo (userId, name, description, dueDate, isCompleted) VALUES (:userId, :name, :description, :dueDate, :isCompleted)")
-    void insert(int userId, String name, String description, String dueDate, boolean isCompleted);
+    long insert(int userId, String name, String description, String dueDate, boolean isCompleted);
 
     @Query("DELETE FROM todo WHERE todoId =:todoId")
     void delete(int todoId);

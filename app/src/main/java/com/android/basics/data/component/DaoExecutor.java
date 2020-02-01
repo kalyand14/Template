@@ -3,21 +3,32 @@ package com.android.basics.data.component;
 import android.os.AsyncTask;
 
 public class DaoExecutor {
-    private DaoCallback daoCallback;
 
     public DaoExecutor() {
     }
 
-    public void start(DaoCallback daoCallback) {
-        this.daoCallback = daoCallback;
-        new DaoProcessAsyncTask().execute();
+    public <T> void start(DaoCallback<T> daoCallback) {
+        new DaoProcessAsyncTask<T>(daoCallback).execute();
     }
 
-    private class DaoProcessAsyncTask extends AsyncTask<Void, Void, Void> {
+    private static class DaoProcessAsyncTask<T> extends
+            AsyncTask<Object, Void, T> {
+
+        DaoCallback<T> callback;
+
+        DaoProcessAsyncTask(DaoCallback<T> callback) {
+            this.callback = callback;
+        }
+
         @Override
-        protected Void doInBackground(Void... params) {
-            daoCallback.doAsync();
-            return null;
+        protected T doInBackground(Object... voids) {
+            return callback.doAsync();
+        }
+
+        @Override
+        protected void onPostExecute(T result) {
+            callback.onComplete(result);
         }
     }
+
 }

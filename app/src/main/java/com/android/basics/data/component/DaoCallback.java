@@ -1,5 +1,7 @@
 package com.android.basics.data.component;
 
-public interface DaoCallback {
-    void doAsync();
+public interface DaoCallback<T> {
+    T doAsync();
+
+    void onComplete(T response);
 }

@@ -5,32 +5,25 @@ import com.android.basics.core.di.InstanceContainer;
 
 public class UserScope implements BaseScope {
     private final InstanceContainer container = new InstanceContainer();
-    private static UserScope instance = null;
-
-    private TodoScope todoScope;
 
     private UserScope() {
-
     }
 
     public static UserScope getInstance() {
-        if (instance == null) {
-            instance = new UserScope();
+        if (!ApplicationScope.getInstance().getContainer().has(UserScope.class)) {
+            ApplicationScope.getInstance().getContainer().register(UserScope.class, new UserScope());
         }
-        return instance;
+        return ApplicationScope.getInstance().getContainer().get(UserScope.class);
     }
 
     @Override
     public void end() {
-        todoScope.end();
         container.end();
     }
 
-    public TodoScope getTodoScope() {
-        return todoScope;
+    public InstanceContainer getContainer() {
+        return container;
     }
 
-    public void setTodoScope(TodoScope todoScope) {
-        this.todoScope = todoScope;
-    }
+
 }

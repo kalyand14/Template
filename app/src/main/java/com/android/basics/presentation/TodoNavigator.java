@@ -3,6 +3,7 @@ package com.android.basics.presentation;
 import android.content.Intent;
 
 import com.android.basics.core.navigation.Navigator;
+import com.android.basics.di.UserScope;
 import com.android.basics.presentation.home.HomeActivity;
 import com.android.basics.presentation.home.HomeScreenContract;
 import com.android.basics.presentation.login.LoginActivity;
@@ -10,8 +11,15 @@ import com.android.basics.presentation.login.LoginContract;
 import com.android.basics.presentation.registration.RegisterUserActivity;
 import com.android.basics.presentation.registration.RegisterUserContract;
 import com.android.basics.presentation.splash.SplashContract;
+import com.android.basics.presentation.todo.add.AddTodoActivity;
+import com.android.basics.presentation.todo.add.AddTodoContract;
+import com.android.basics.presentation.todo.edit.EditTodoActivity;
 
-public class TodoNavigator implements SplashContract.Navigator, LoginContract.Navigator, RegisterUserContract.Navigator, HomeScreenContract.Navigator {
+public class TodoNavigator implements SplashContract.Navigator,
+        LoginContract.Navigator,
+        RegisterUserContract.Navigator,
+        HomeScreenContract.Navigator,
+        AddTodoContract.Navigator {
     private Navigator navigator;
 
     public TodoNavigator(Navigator navigator) {
@@ -19,7 +27,22 @@ public class TodoNavigator implements SplashContract.Navigator, LoginContract.Na
     }
 
     @Override
+    public void goToEditTodoScreen(int todoId) {
+        Intent intent = navigator.createIntent(EditTodoActivity.class);
+        navigator.launchActivity(intent);
+    }
+
+    @Override
+    public void gotoAddTodoScreen() {
+        Intent intent = navigator.createIntent(AddTodoActivity.class);
+        navigator.launchActivity(intent);
+    }
+
+    @Override
     public void goToLoginScreen() {
+
+        UserScope.getInstance().end();
+
         Intent intent = navigator.createIntent(LoginActivity.class);
         navigator.launchActivity(intent);
         navigator.finishActivity();
@@ -37,4 +60,6 @@ public class TodoNavigator implements SplashContract.Navigator, LoginContract.Na
         navigator.launchActivity(intent);
         navigator.finishActivity();
     }
+
+
 }

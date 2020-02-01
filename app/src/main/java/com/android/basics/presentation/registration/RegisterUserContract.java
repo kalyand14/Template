@@ -26,6 +26,6 @@ public interface RegisterUserContract {
     interface Navigator {
         void goToLoginScreen();
 
-        void  goToHomeScreen();
+        void goToHomeScreen();
     }
 }

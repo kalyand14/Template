@@ -1,4 +1,4 @@
-package com.android.basics.presentation.todo;
+package com.android.basics.presentation.todo.edit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,5 +12,7 @@ public class EditTodoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_todo);
+
+        setTitle("Edit Todo");
     }
 }
