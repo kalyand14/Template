@@ -1,15 +1,19 @@
 package com.android.basics.presentation.todo.add;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.basics.R;
+
+import java.util.Calendar;
 
 public class AddTodoActivity extends AppCompatActivity implements AddTodoContract.View {
 
@@ -18,6 +22,7 @@ public class AddTodoActivity extends AppCompatActivity implements AddTodoContrac
     EditText edtDate;
     Button btnSubmit;
     Button btnCancel;
+    ImageButton btnDate;
 
     AddTodoContract.Presenter presenter;
 
@@ -40,6 +45,7 @@ public class AddTodoActivity extends AppCompatActivity implements AddTodoContrac
 
         btnSubmit = findViewById(R.id.btn_add_todo);
         btnCancel = findViewById(R.id.btn_cancel);
+        btnDate = findViewById(R.id.btn_date);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +58,13 @@ public class AddTodoActivity extends AppCompatActivity implements AddTodoContrac
             @Override
             public void onClick(View view) {
                 presenter.OnCancel();
+            }
+        });
+
+        btnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.onSelectDate();
             }
         });
 
@@ -109,5 +122,21 @@ public class AddTodoActivity extends AppCompatActivity implements AddTodoContrac
             alert.setTitle("Error");
             alert.show();
         });
+    }
+
+    @Override
+    public void showDatePickerDialog() {
+        int mYear, mMonth, mDay, mHour, mMinute;
+        // Get Current Date
+        final Calendar c = Calendar.getInstance();
+        mYear = c.get(Calendar.YEAR);
+        mMonth = c.get(Calendar.MONTH);
+        mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+                (DatePickerDialog.OnDateSetListener) (view, year, monthOfYear, dayOfMonth) ->
+                        edtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year),
+                mYear, mMonth, mDay);
+        datePickerDialog.show();
     }
 }

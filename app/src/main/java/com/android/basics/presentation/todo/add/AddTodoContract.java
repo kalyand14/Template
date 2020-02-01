@@ -11,6 +11,8 @@ public interface AddTodoContract {
         void showSuccessDialog();
 
         void showErrorDialog();
+
+        void showDatePickerDialog();
     }
 
     interface Presenter extends BasePresenter<AddTodoContract.View> {
@@ -19,6 +21,8 @@ public interface AddTodoContract {
         void navigate();
 
         void OnCancel();
+
+        void onSelectDate();
     }
 
     interface Navigator {

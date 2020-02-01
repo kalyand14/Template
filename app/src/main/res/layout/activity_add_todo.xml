@@ -91,7 +91,7 @@
                 android:ems="10" />
 
             <ImageButton
-                android:id="@+id/btnSubmit"
+                android:id="@+id/btn_date"
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
                 android:layout_weight=".1"

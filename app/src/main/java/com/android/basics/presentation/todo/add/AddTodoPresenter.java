@@ -52,6 +52,11 @@ public class AddTodoPresenter implements AddTodoContract.Presenter {
     }
 
     @Override
+    public void onSelectDate() {
+        view.showDatePickerDialog();
+    }
+
+    @Override
     public void attach(AddTodoContract.View view) {
         this.view = view;
     }
