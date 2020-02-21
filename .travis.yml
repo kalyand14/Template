@@ -39,7 +39,7 @@ android:
 # list of directories to Cache
 
 before_install:
-  - yes | sdkmanager "platforms;android-29;android-22"
+  - yes | sdkmanager "platforms;android-29"
 
 licenses:
   - 'android-sdk-preview-license-.+'
