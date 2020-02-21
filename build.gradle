@@ -4,18 +4,22 @@ buildscript {
 
     apply from: 'versions.gradle'
 
-    addRepos(repositories)
-
     repositories {
         google()
+        jcenter()
+        mavenCentral()
     }
+
     dependencies {
         classpath deps.android_gradle_plugin
     }
 }
 
 allprojects {
-    addRepos(repositories)
+    repositories {
+        google()
+        jcenter()
+    }
 }
 
 task clean(type: Delete) {
