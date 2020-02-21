@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/kalyand14/Template.svg?branch=master)](https://travis-ci.org/kalyand14/Template)
+[![codecov](https://codecov.io/gh/kalyand14/Template/branch/master/graph/badge.svg)](https://codecov.io/gh/kalyand14/Template)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ecb3b4eff4b442ee84943a6597336677)](https://app.codacy.com/manual/kalyand14/Template?utm_source=github.com&utm_medium=referral&utm_content=kalyand14/Template&utm_campaign=Badge_Grade_Dashboard)
 
 <H1>Todo Application</H1>
