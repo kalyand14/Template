@@ -28,6 +28,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    implementation deps.arch_core.runtime
     implementation deps.app_compat
     implementation deps.material
     implementation deps.cardview

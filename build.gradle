@@ -4,28 +4,19 @@ buildscript {
 
     apply from: 'versions.gradle'
 
+    addRepos(repositories)
+
     repositories {
         google()
-        jcenter()
-        mavenCentral()
     }
-
     dependencies {
         classpath deps.android_gradle_plugin
-        classpath 'org.owasp:dependency-check-gradle:4.0.1'
     }
 }
 
-buildDir = 'gen_build'
 allprojects {
-    buildDir = 'gen_build'
-    repositories {
-        google()
-        jcenter()
-    }
-    apply plugin: 'org.owasp.dependencycheck'
+    addRepos(repositories)
 }
-
 
 task clean(type: Delete) {
     delete rootProject.buildDir
