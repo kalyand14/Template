@@ -25,13 +25,13 @@ public class TodoListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     private TodoScope scope;
 
-    private TodoSession session;
+    private TodoSession userSession;
 
     public TodoListAdapter(List<Todo> todoList, HomeScreenContract.Navigator navigator, TodoSession todoSession, TodoScope scope) {
         this.todoList = todoList;
         this.navigator = navigator;
         this.scope = scope;
-        this.session = todoSession;
+        this.userSession = todoSession;
     }
 
     @NonNull
@@ -79,7 +79,7 @@ public class TodoListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
             itemView.setOnClickListener(view -> {
                 scope.end();
-                TodoSession.getInstance().setTodo(todo);
+                userSession.setTodo(todo);
                 navigator.goToEditTodoScreen();
             });
         }
