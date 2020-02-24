@@ -14,16 +14,12 @@ import com.android.basics.di.UserScope;
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
     public LoginContract.Presenter presenter;
-
     public ProgressDialog progressDialog;
-
     public Button btnLogin;
     public Button btnRegister;
-
     public EditText edtUserName;
     public EditText edtPassword;
-
-    AlertDialog.Builder builder;
+    public AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
