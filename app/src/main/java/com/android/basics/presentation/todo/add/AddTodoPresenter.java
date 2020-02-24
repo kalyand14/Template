@@ -47,7 +47,7 @@ public class AddTodoPresenter implements AddTodoContract.Presenter {
     }
 
     @Override
-    public void OnCancel() {
+    public void onCancel() {
         navigator.goToHomeScreen();
     }
 

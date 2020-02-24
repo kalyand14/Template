@@ -17,10 +17,10 @@ public class PluralsResourceSaxParse implements Parser<Integer, Map<String, Stri
     private static final String STRING_RES_PATH = "app/src/main/res/values/strings.xml";
     private static final String BACKUP_STRING_RES_PATH = "src/main/res/values/strings.xml";
     private static final Class<R.plurals> PLURALS_CLASS = R.plurals.class;
-    private onFileParsedListener<Integer, Map<String, String>> onFileParsedListener;
+    private OnFileParsedListener<Integer, Map<String, String>> onFileParsedListener;
 
     @Override
-    public void parse(onFileParsedListener<Integer, Map<String, String>> onFileParsedListener) {
+    public void parse(OnFileParsedListener<Integer, Map<String, String>> onFileParsedListener) {
         this.onFileParsedListener = onFileParsedListener;
         parsePlurals(STRING_RES_PATH);
     }

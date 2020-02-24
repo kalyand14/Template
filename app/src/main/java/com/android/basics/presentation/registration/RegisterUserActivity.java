@@ -12,17 +12,17 @@ import com.android.basics.R;
 
 public class RegisterUserActivity extends AppCompatActivity implements RegisterUserContract.View {
 
-    RegisterUserContract.Presenter presenter;
+    public RegisterUserContract.Presenter presenter;
 
-    ProgressDialog progressDialog;
+    public ProgressDialog progressDialog;
 
-    Button btnLogin;
-    Button btnRegister;
+    public Button btnLogin;
+    public Button btnRegister;
 
-    EditText edtUserName;
-    EditText edtPassword;
+    public EditText edtUserName;
+    public EditText edtPassword;
 
-    AlertDialog.Builder builder;
+    public AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

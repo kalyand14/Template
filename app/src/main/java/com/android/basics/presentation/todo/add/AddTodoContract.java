@@ -20,7 +20,7 @@ public interface AddTodoContract {
 
         void navigate();
 
-        void OnCancel();
+        void onCancel();
 
         void onSelectDate();
     }

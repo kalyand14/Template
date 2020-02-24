@@ -20,7 +20,7 @@ public class StringArrayResourceSaxParser implements Parser<Integer, String[]>, 
     private static final String ARRAY_RES_PATH = "app/src/main/res/values/arrays.xml";
     private static final String BACKUP_ARRAY_RES_PATH = "src/main/res/values/arrays.xml";
     private static final Class<R.array> ARRAY_CLASS = R.array.class;
-    private onFileParsedListener<Integer, String[]> onFileParsedListener;
+    private OnFileParsedListener<Integer, String[]> onFileParsedListener;
 
     private DefaultHandler handler = new DefaultHandler() {
 
@@ -99,7 +99,7 @@ public class StringArrayResourceSaxParser implements Parser<Integer, String[]>, 
     }
 
     @Override
-    public void parse(onFileParsedListener<Integer, String[]> onFileParsedListener) {
+    public void parse(OnFileParsedListener<Integer, String[]> onFileParsedListener) {
         this.onFileParsedListener = onFileParsedListener;
         parseStringArray(ARRAY_RES_PATH);
     }

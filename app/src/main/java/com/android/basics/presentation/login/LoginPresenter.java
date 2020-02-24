@@ -22,7 +22,7 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
     @Override
-    public void OnLoginClick(String userName, String password) {
+    public void onLoginClick(String userName, String password) {
         view.showProgressDialog();
 
         authenticateUserInteractor.execute(AuthenticateUserInteractor.Params.forUser(userName, password), new Callback<User>() {

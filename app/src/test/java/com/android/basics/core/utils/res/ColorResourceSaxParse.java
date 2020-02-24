@@ -12,10 +12,10 @@ public class ColorResourceSaxParse implements Parser<String, String> {
 
     private static final String COLOR_RES_PATH = "app/src/main/res/values/colors.xml";
     private static final String BACKUP_COLOR_RES_PATH = "src/main/res/values/colors.xml";
-    private onFileParsedListener<String, String> onFileParsedListener;
+    private OnFileParsedListener<String, String> onFileParsedListener;
 
     @Override
-    public void parse(onFileParsedListener<String, String> onFileParsedListener) {
+    public void parse(OnFileParsedListener<String, String> onFileParsedListener) {
         this.onFileParsedListener = onFileParsedListener;
         parseColor(COLOR_RES_PATH);
     }

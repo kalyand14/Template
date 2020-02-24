@@ -17,7 +17,7 @@ public class StringResourceSaxParser implements Parser<Integer, String>, Mapper<
     private static final String STRING_RES_PATH = "app/src/main/res/values/strings.xml";
     private static final String BACKUP_STRING_RES_PATH = "src/main/res/values/strings.xml";
     private static final Class<R.string> STRING_CLASS = R.string.class;
-    private onFileParsedListener<Integer, String> onFileParsedListener;
+    private OnFileParsedListener<Integer, String> onFileParsedListener;
 
     StringResourceSaxParser() {
     }
@@ -66,7 +66,7 @@ public class StringResourceSaxParser implements Parser<Integer, String>, Mapper<
     }
 
     @Override
-    public void parse(Parser.onFileParsedListener<Integer, String> onFileParsedListener) {
+    public void parse(OnFileParsedListener<Integer, String> onFileParsedListener) {
         this.onFileParsedListener = onFileParsedListener;
         parseString(STRING_RES_PATH);
     }

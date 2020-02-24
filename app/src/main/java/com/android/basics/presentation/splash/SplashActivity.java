@@ -9,7 +9,7 @@ import com.android.basics.R;
 
 public class SplashActivity extends AppCompatActivity implements SplashContract.View {
 
-    SplashContract.Presenter presenter;
+    public SplashContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,6 +1,6 @@
 package com.android.basics.core;
 
-public interface Mapper<From, To> {
+public interface Mapper<F, T> {
 
-    To convert(From fromObj);
+    T convert(F fromObj);
 }

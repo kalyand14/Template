@@ -17,15 +17,16 @@ import java.util.concurrent.Executors;
 @Database(entities = {TodoTbl.class, UserTbl.class}, version = 1, exportSchema = false)
 public abstract class TodoDatabase extends RoomDatabase {
 
-    public abstract TodoDao todoDao();
-
-    public abstract UserDao userDao();
-
     private static volatile TodoDatabase INSTANCE;
 
     private static final int NUMBER_OF_THREADS = 4;
+
     static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
+
+    public abstract TodoDao todoDao();
+
+    public abstract UserDao userDao();
 
     public static TodoDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {

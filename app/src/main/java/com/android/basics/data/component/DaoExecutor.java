@@ -4,9 +4,6 @@ import android.os.AsyncTask;
 
 public class DaoExecutor {
 
-    public DaoExecutor() {
-    }
-
     public <T> void start(DaoCallback<T> daoCallback) {
         new DaoProcessAsyncTask<T>(daoCallback).execute();
     }
@@ -14,7 +11,7 @@ public class DaoExecutor {
     private static class DaoProcessAsyncTask<T> extends
             AsyncTask<Object, Void, T> {
 
-        DaoCallback<T> callback;
+        private DaoCallback<T> callback;
 
         DaoProcessAsyncTask(DaoCallback<T> callback) {
             this.callback = callback;

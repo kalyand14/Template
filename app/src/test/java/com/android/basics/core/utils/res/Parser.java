@@ -4,9 +4,9 @@ import java.util.Map;
 
 public interface Parser<K, V> {
 
-    interface onFileParsedListener<K, V> {
+    interface OnFileParsedListener<K, V> {
         void onFileParsedSuccessfully(Map<? extends K, ? extends V> m);
     }
 
-    void parse(onFileParsedListener<K, V> onFileParsedListener);
+    void parse(OnFileParsedListener<K, V> onFileParsedListener);
 }

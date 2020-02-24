@@ -13,15 +13,15 @@ import com.android.basics.di.UserScope;
 
 public class LoginActivity extends AppCompatActivity implements LoginContract.View {
 
-    LoginContract.Presenter presenter;
+    public LoginContract.Presenter presenter;
 
-    ProgressDialog progressDialog;
+    public ProgressDialog progressDialog;
 
-    Button btnLogin;
-    Button btnRegister;
+    public Button btnLogin;
+    public Button btnRegister;
 
-    EditText edtUserName;
-    EditText edtPassword;
+    public EditText edtUserName;
+    public EditText edtPassword;
 
     AlertDialog.Builder builder;
 
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         edtPassword = findViewById(R.id.edt_todo_description);
         builder = new AlertDialog.Builder(this);
 
-        btnLogin.setOnClickListener(view -> presenter.OnLoginClick(edtUserName.getText().toString(), edtPassword.getText().toString()));
+        btnLogin.setOnClickListener(view -> presenter.onLoginClick(edtUserName.getText().toString(), edtPassword.getText().toString()));
         btnRegister.setOnClickListener(view -> presenter.onRegisterClick());
 
         UserScope.getInstance().end();

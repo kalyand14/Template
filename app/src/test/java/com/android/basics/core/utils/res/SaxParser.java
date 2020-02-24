@@ -10,13 +10,13 @@ import javax.xml.parsers.SAXParserFactory;
 public class SaxParser {
 
     private File file;
-    private onFallBackListener fallBackListener;
+    private OnFallBackListener fallBackListener;
 
-    interface onFallBackListener {
+    interface OnFallBackListener {
         void onFileParseError(Exception e);
     }
 
-    public void setFallBackListener(onFallBackListener fallBackListener) {
+    public void setFallBackListener(OnFallBackListener fallBackListener) {
         this.fallBackListener = fallBackListener;
     }
 

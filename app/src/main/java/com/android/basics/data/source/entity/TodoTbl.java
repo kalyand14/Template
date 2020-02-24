@@ -7,6 +7,35 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "todo")
 public class TodoTbl {
 
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    private int todoId;
+    private int userId;
+    private String name;
+    private String description;
+    private String dueDate;
+    private Boolean isCompleted;
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public void setCompleted(Boolean completed) {
+        isCompleted = completed;
+    }
+
     public int getTodoId() {
         return todoId;
     }
@@ -34,36 +63,6 @@ public class TodoTbl {
     public void setTodoId(int todoId) {
         this.todoId = todoId;
     }
-
-    @PrimaryKey(autoGenerate = true)
-    @NonNull
-    private int todoId;
-    private int userId;
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-
-    public void setCompleted(Boolean completed) {
-        isCompleted = completed;
-    }
-
-    private String name;
-    private String description;
-    private String dueDate;
-    private Boolean isCompleted;
 
     public TodoTbl(int userId, String name, String description, String dueDate, boolean isCompleted) {
         this.userId = userId;

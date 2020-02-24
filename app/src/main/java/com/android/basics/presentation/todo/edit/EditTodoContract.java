@@ -30,7 +30,7 @@ public interface EditTodoContract {
 
         void navigate();
 
-        void OnCancel();
+        void onCancel();
 
         void onDelete();
 

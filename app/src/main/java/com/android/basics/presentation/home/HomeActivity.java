@@ -24,15 +24,15 @@ import java.util.List;
 
 public class HomeActivity extends AppCompatActivity implements HomeScreenContract.View {
 
-    ProgressDialog progressDialog;
-    HomeScreenContract.Presenter presenter;
-    RecyclerView recyclerView;
-    TodoListAdapter todoListAdapter;
-    LinearLayoutManager layoutManager;
-    User user;
-    TextView txtError;
-    FloatingActionButton floatingActionButton;
-    AlertDialog.Builder builder;
+    public ProgressDialog progressDialog;
+    public HomeScreenContract.Presenter presenter;
+    public RecyclerView recyclerView;
+    public TodoListAdapter todoListAdapter;
+    public  LinearLayoutManager layoutManager;
+    public User user;
+    public TextView txtError;
+    public FloatingActionButton floatingActionButton;
+    public AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

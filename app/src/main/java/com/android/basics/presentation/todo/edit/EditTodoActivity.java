@@ -20,16 +20,16 @@ import java.util.Calendar;
 
 public class EditTodoActivity extends AppCompatActivity implements EditTodoContract.View {
 
-    EditTodoContract.Presenter presenter;
-    ProgressDialog progressDialog;
-    AlertDialog.Builder builder;
+    public EditTodoContract.Presenter presenter;
+    public ProgressDialog progressDialog;
+    public AlertDialog.Builder builder;
 
-    EditText edtName;
-    EditText edtDescription;
-    EditText edtDate;
-    Button btnSubmit;
-    Button btnDelete;
-    ImageButton btnDate;
+    public EditText edtName;
+    public EditText edtDescription;
+    public EditText edtDate;
+    public Button btnSubmit;
+    public Button btnDelete;
+    public ImageButton btnDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,19 +55,9 @@ public class EditTodoActivity extends AppCompatActivity implements EditTodoContr
             }
         });
 
-        btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onDelete();
-            }
-        });
+        btnDelete.setOnClickListener(view -> presenter.onDelete());
 
-        btnDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                presenter.onSelectDate();
-            }
-        });
+        btnDate.setOnClickListener(view -> presenter.onSelectDate());
 
         EditTodoInjector.getInstance().inject(this);
 
@@ -96,7 +86,6 @@ public class EditTodoActivity extends AppCompatActivity implements EditTodoContr
 
     @Override
     public void showSuccessDialog(String message) {
-
         //Setting message manually and performing action on button click
         builder.setMessage(message)
                 .setCancelable(false)
@@ -126,17 +115,19 @@ public class EditTodoActivity extends AppCompatActivity implements EditTodoContr
 
     @Override
     public void showDatePickerDialog() {
-        int mYear, mMonth, mDay, mHour, mMinute;
+        int year;
+        int month;
+        int day;
         // Get Current Date
         final Calendar c = Calendar.getInstance();
-        mYear = c.get(Calendar.YEAR);
-        mMonth = c.get(Calendar.MONTH);
-        mDay = c.get(Calendar.DAY_OF_MONTH);
+        year = c.get(Calendar.YEAR);
+        month = c.get(Calendar.MONTH);
+        day = c.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,
-                (DatePickerDialog.OnDateSetListener) (view, year, monthOfYear, dayOfMonth) ->
-                        edtDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year),
-                mYear, mMonth, mDay);
+                (view, selectedYear, selectedMonth, dayOfMonth) ->
+                        edtDate.setText(dayOfMonth + "/" + (selectedMonth + 1) + "/" + selectedYear),
+                year, month, day);
         datePickerDialog.show();
     }
 
@@ -167,7 +158,7 @@ public class EditTodoActivity extends AppCompatActivity implements EditTodoContr
         // Handle item selection
         switch (item.getItemId()) {
             case R.id.cancel:
-                presenter.OnCancel();
+                presenter.onCancel();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -17,7 +17,7 @@ public class IntegerResourceSaxParser implements Parser<Integer, Integer>, Mappe
     private static final String INTEGER_RES_PATH = "app/src/main/res/values/integers.xml";
     private static final String BACKUP_INTEGER_RES_PATH = "src/main/res/values/integers.xml";
     private static final Class<R.integer> INTEGER_CLASS = R.integer.class;
-    private onFileParsedListener<Integer, Integer> onFileParsedListener;
+    private OnFileParsedListener<Integer, Integer> onFileParsedListener;
 
     @Override
     public Map<Integer, Integer> convert(Map<String, Integer> fromObj) {
@@ -36,7 +36,7 @@ public class IntegerResourceSaxParser implements Parser<Integer, Integer>, Mappe
     }
 
     @Override
-    public void parse(onFileParsedListener<Integer, Integer> onFileParsedListener) {
+    public void parse(OnFileParsedListener<Integer, Integer> onFileParsedListener) {
         this.onFileParsedListener = onFileParsedListener;
         parseInteger(INTEGER_RES_PATH);
     }

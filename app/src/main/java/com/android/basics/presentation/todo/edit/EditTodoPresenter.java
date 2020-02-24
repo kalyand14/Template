@@ -61,7 +61,7 @@ public class EditTodoPresenter implements EditTodoContract.Presenter {
     }
 
     @Override
-    public void OnCancel() {
+    public void onCancel() {
         navigator.goToHomeScreen();
     }
 

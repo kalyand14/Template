@@ -3,7 +3,6 @@ package com.android.basics.presentation;
 import android.content.Intent;
 
 import com.android.basics.core.navigation.Navigator;
-import com.android.basics.di.UserScope;
 import com.android.basics.presentation.home.HomeActivity;
 import com.android.basics.presentation.home.HomeScreenContract;
 import com.android.basics.presentation.login.LoginActivity;
@@ -42,9 +41,6 @@ public class TodoNavigator implements SplashContract.Navigator,
 
     @Override
     public void goToLoginScreen() {
-
-
-
         Intent intent = navigator.createIntent(LoginActivity.class);
         navigator.launchActivity(intent);
         navigator.finishActivity();
