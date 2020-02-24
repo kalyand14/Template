@@ -21,7 +21,7 @@ public abstract class TodoDatabase extends RoomDatabase {
 
     private static final int NUMBER_OF_THREADS = 4;
 
-    static final ExecutorService databaseWriteExecutor =
+    public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public abstract TodoDao todoDao();

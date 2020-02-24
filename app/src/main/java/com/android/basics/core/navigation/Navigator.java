@@ -11,9 +11,8 @@ public class Navigator implements BaseNavigator {
 
     private final WeakReference<AppCompatActivity> contextWeakRef;
 
-    IntentFactory intentFactory;
-    BundleFactory bundleFactory;
-
+    private IntentFactory intentFactory;
+    private BundleFactory bundleFactory;
 
     public Navigator(AppCompatActivity context, IntentFactory intentFactory, BundleFactory bundleFactory) {
         this.contextWeakRef = new WeakReference<>(context);

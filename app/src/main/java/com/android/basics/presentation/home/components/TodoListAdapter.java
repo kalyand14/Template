@@ -58,9 +58,9 @@ public class TodoListAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public class ViewHolder extends BaseViewHolder {
 
-        TextView txtName;
-        TextView txtDate;
-        TextView txtDescription;
+        private TextView txtName;
+        private TextView txtDate;
+        private TextView txtDescription;
 
         public ViewHolder(View itemView) {
             super(itemView);

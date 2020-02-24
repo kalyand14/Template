@@ -10,6 +10,8 @@ public class UserTbl {
     @PrimaryKey(autoGenerate = true)
     @NonNull
     private int userId;
+    private String userName;
+    private String password;
 
     public int getUserId() {
         return userId;
@@ -22,9 +24,6 @@ public class UserTbl {
     public String getPassword() {
         return password;
     }
-
-    private String userName;
-    private String password;
 
     public UserTbl(int userId, String userName, String password) {
         this.userId = userId;
