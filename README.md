@@ -45,3 +45,5 @@ At a glance:
  </ul>
 
 <b>References</b>
+
+Codecov and Travis-Ci integration - https://github.com/codecov/example-android
