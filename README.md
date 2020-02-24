@@ -49,3 +49,8 @@ At a glance:
 Jacoco test report integration - https://github.com/arturdm/jacoco-android-gradle-plugin  <br>
 Travis-Ci integration - https://github.com/codecov/example-android/blob/master/.travis.yml <br>
 Codecov and Travis-Ci integration - https://github.com/codecov/example-android
+
+Future updates based on
+
+https://github.com/bufferapp/clean-architecture-components-boilerplate
+https://github.com/android10/Android-CleanArchitecture
