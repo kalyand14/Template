@@ -46,5 +46,5 @@ At a glance:
 
 <b>References</b>
 
-Travis Ci integration - https://github.com/codecov/example-android/blob/master/.travis.yml
+Travis-Ci integration - https://github.com/codecov/example-android/blob/master/.travis.yml <\n>
 Codecov and Travis-Ci integration - https://github.com/codecov/example-android
