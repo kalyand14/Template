@@ -6,23 +6,22 @@ jdk:
 
 env:
   global:
-    - ANDROID_API_LEVEL=29
-    - ANDROID_API_LEVEL_22=22
+    - ANDROID_BUILD_API=29
+    - ANDROID_TEST_API=22
     - ANDROID_BUILD_TOOLS_VERSION=29.0.3
     - ANDROID_ABI=armeabi-v7a
     - ANDROID_TAG=google_apis
-    - ANDROID_TARGET=android-29
     - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
 
 android:
   components:
     - tools
     - platform-tools
-    - android-$ANDROID_API_LEVEL_22
     - build-tools-$ANDROID_BUILD_TOOLS_VERSION
-    - android-$ANDROID_API_LEVEL
+    - android-$ANDROID_BUILD_API
+    - android-$ANDROID_TEST_API
     # For Google APIs
-    - addon-google_apis-google-$ANDROID_API_LEVEL
+    - addon-google_apis-google-$ANDROID_BUILD_API
     # Google Play Services
     - extra-google-google_play_services
     # Support library
@@ -33,8 +32,8 @@ android:
     - android-sdk-license-.+
     - '.+'
     # Specify at least one system image
-    - sys-img-armeabi-v7a-google_apis-$ANDROID_API_LEVEL
-    - sys-img-armeabi-v7a-android-$ANDROID_API_LEVEL_22
+    - sys-img-armeabi-v7a-google_apis-$ANDROID_TEST_API
+    - sys-img-armeabi-v7a-android-$ANDROID_TEST_API
 
 # list of directories to Cache
 
@@ -50,7 +49,12 @@ before_script:
   - chmod +x gradlew
 
 script:
-  - ./gradlew build
+  - ./gradlew build jacocoTestReport assembleAndroidTest
+  - echo no | android create avd --force -n test -t android-$ANDROID_TEST_API --abi $ANDROID_ABI
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+  - ./gradlew connectedCheck
 
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock

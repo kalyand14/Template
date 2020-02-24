@@ -1,4 +1,11 @@
+apply from: '../jacoco.gradle'
+
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
+
+tasks.withType(Test) {
+    jacoco.includeNoLocationClasses = true
+}
 
 android {
     compileSdkVersion build_versions.compile_sdk
